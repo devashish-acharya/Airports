@@ -1,11 +1,21 @@
-class Plane {
-    constructor({name}) {
-        this.name = name
-        this.passenger = []
+const Airport = require('./Airport')
+class Plane{
+    constructor(){
+        this.destination = ''
+        this.Passengers = []
+        this.location = ''
     }
-    addPassenger(passenger) {
-        this.passenger.push(passenger)
+    addPassenger(Passenger){
+        this.Passengers.push(Passenger)
+    }
+    setDestination(destination){
+        this.destination = destination
+    }
+    setLocation(location){
+        this.location = location
     }
 }
+
+module.exports = Plane
 
 module.exports = Plane

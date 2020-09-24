@@ -1,21 +1,24 @@
+  
+const { TestScheduler } = require('jest')
 const Plane = require('./Plane')
 const Passenger = require('./Passenger')
 
-describe('Plane', function () {
-    test('has a name', function () {
-        const plane = new Plane({name: "British Airways"})
-        expect(plane.name).toEqual("British Airways")
+describe('Plane', function(){
+    test('where is it going?', function(){
+        const plane = new Plane()
+        plane.setDestination('LHR')
+        expect(plane.destination).toEqual('LHR')
     })
-
-    test('has passengers', () => {
-        const plane = new Plane({pname: "British Airways"})
-        const person1 = new Passenger({name: "Dev"})
-        const person2 = new Passenger({name: "Elijah"})
-        const person3 = new Passenger({name: "Kate"})
-        plane.addPassenger(person1)
-        plane.addPassenger(person2)
-        plane.addPassenger(person3)
-        expect(plane.passenger.length).toBe(3)
-})
-
+    test('does it have passengers?', function(){
+        let plane = new Plane('London')
+        plane.addPassenger('Guv')
+        plane.addPassenger('Giles')
+    })
+    test('only passengers with a bag?', function(){
+        plane = new Plane('London')
+        let person = new Passenger('Guv')
+        plane.addPassenger(person)
+        person.addBag(20)
+        expect(person.bags.length).not.toBe(0)
+    })
 })

@@ -1,13 +1,9 @@
-const Plane = require('./Plane')
 const Airport = require('./Airport')
+const Plane = require('./Plane')
+const Passenger = require('./Passenger')
 
-describe('Airport', function () {
-    test('has a name', function () {
-        const plane = new Plane({name: "Heathrow"})
-        expect(plane.name).toEqual("Heathrow")
-    })
-
-    test('has planes', () => {
+describe('Airport', function(){
+    /*test('has planes', () => {
         const airport = new Airport({name: "Heathrow"})
         const plane1 = new Plane({name: "British Airways"})
         const plane2 = new Plane({name: "Easy Jet"})
@@ -16,6 +12,30 @@ describe('Airport', function () {
         airport.addPlane(plane2)
         airport.addPlane(plane3)
         expect(airport.plane.length).toBe(3)
-})
+     })*/
 
+    test('LHR to HKG', ()=>{
+        //airports
+        airport1 = new Airport('LHR')
+        airport2 = new Airport('HKG')
+
+        //plabe
+        plane = new Plane()
+
+        //conection between airports
+        plane.setDestination(airport2.name)
+        airport1.addPlane(plane)
+
+        //test before takeoff
+        expect(plane.location).toEqual('LHR')
+        expect(plane.destination).toEqual('HKG')
+
+        //takeoff
+        airport1.takeoff(plane)
+
+        //test after landing
+        expect(airport1.planes.length).toBe(0)
+        expect(airport2.planes.length).toBe(1)
+        expect(plane.location).toEqual('HKG')
+    })
 })

@@ -1,5 +1,5 @@
-class Bag {
-    constructor(weight) {
+class Bag{
+    constructor(weight){
         this.weight = weight
     }
 }

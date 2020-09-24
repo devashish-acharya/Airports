@@ -1,9 +1,9 @@
-class Passenger {
-    constructor({name}) {
+class Passenger{
+    constructor(name){
         this.name = name
         this.bags = []
     }
-    addBag(bag) {
+    addBag(bag){
         this.bags.push(bag)
     }
 }
