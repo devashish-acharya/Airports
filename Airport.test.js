@@ -38,4 +38,28 @@ describe('Airport', function(){
         expect(airport2.planes.length).toBe(1)
         expect(plane.location).toEqual('HKG')
     })
+    
+    test('have extra data we can get', async () => {
+        const LHR = new Airport('LHR')
+        const info = await LHR.getInfo()
+        expect(info.city).toBe('London')
+       
+    })
+
+    test('have extra data', async () => {
+        const CDG = new Airport('CDG')
+        const info = await CDG.getInfo()
+        expect(info.city).toBe('Paris')
+    })
+
+    
+    test('airports have a city', (done) => {
+        const HKG = new Airport({name: 'HKG'})
+        HKG.getInfo((err, info) => {
+            expect(err).toBeNull()
+            expect(info.city).toBe("Hong Kong")
+            done()
+        })
+    })
+    
 })
